@@ -1,0 +1,86 @@
+name: Run - Publisher
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      SELECT_TARGET_ENV:
+        description: 'Choose the target environment to deploy APIs to'     
+        required: true
+        type: choice
+        default: dev
+        options:
+        - dev
+        - qa
+        - uat
+        - prod
+      COMMIT_ID_CHOICE:
+        description: 'Commit Id'
+        required: true
+        type: string
+      ARTIFACT_NAME:
+        description: 'Name of the Repo Folder'     
+        required: true
+        type: string
+
+jobs:
+  
+  #Publish with Commit ID
+  Push-Changes-To-APIM-With-Commit-ID:
+    if: (github.event.inputs.COMMIT_ID_CHOICE != '')
+    uses: ./.github/workflows/run-publisher-with-env.yaml
+    with:
+      API_MANAGEMENT_ENVIRONMENT: ${{ github.event.inputs.SELECT_TARGET_ENV }} # change this to match the dev environment created in settings
+      CONFIGURATION_YAML_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }}/config/configuration.${{ github.event.inputs.SELECT_TARGET_ENV }}.yaml # make sure the file is available at the root
+      COMMIT_ID: ${{ github.event.inputs.COMMIT_ID_CHOICE }}
+      API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }} # change this to the artifacts folder
+    secrets: inherit
+
+  #Publish without Commit ID. Publishes all artifacts that reside in the artifacts forlder
+  Push-Changes-To-APIM-Without-Commit-ID:
+    if: ( github.event.inputs.COMMIT_ID_CHOICE == 'publish-all-artifacts-in-repo' )
+    uses: ./.github/workflows/run-publisher-with-env.yaml
+    with:
+      API_MANAGEMENT_ENVIRONMENT: ${{ github.event.inputs.SELECT_TARGET_ENV }} # change this to match the dev environment created in settings
+      API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }} # change this to the artifacts folder
+    secrets: inherit
+   
+  # Add a combined step for Node.js setup, installing dependencies, and running Postman tests
+  # Run-TestCase-With-Commit-ID:
+  #   needs: [Push-Changes-To-APIM-With-Commit-ID]
+  #   if:  (${{ needs.Push-Changes-To-APIM-With-Commit-ID.result }} == 'success' )
+  #   uses: ./.github/workflows/run-postman-tests.yaml
+  #   with:
+  #     collection_path: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }}/postmanCollection/myAPITestpostman_collection.json  # Provide the path to your collection
+  #     environment_path: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }}/postmanCollection/testEnvpostman_environment.json  # Provide the path to your environment file
+  #     folders: "safe"  # Specify the folders to execute (for non-production)
+
+  # Run-TestCase-Without-Commit-ID:
+  #   needs: [Push-Changes-To-APIM-Without-Commit-ID]
+  #   if:  (${{ needs.Push-Changes-To-APIM-Without-Commit-ID.result }} == 'success' )
+  #   uses: ./.github/workflows/run-postman-tests.yaml
+  #   with:
+  #     collection_path: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }}/postmanCollection/myAPITestpostman_collection.json  # Provide the path to your collection
+  #     environment_path: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }}/postmanCollection/testEnvpostman_environment.json  # Provide the path to your environment file
+  #     folders: "safe"  # Specify the folders to execute (for non-production)
+      
+  # Push-Changes-To-APIM-Prod-With-Commit-ID:
+  #   if: (github.event.inputs.COMMIT_ID_CHOICE == 'publish-artifacts-in-last-commit' || github.event.inputs.COMMIT_ID_CHOICE == '')
+  #   needs: [get-commit, Push-Changes-To-APIM-Dev-With-Commit-ID]
+  #   uses: ./.github/workflows/run-publisher-with-env.yaml
+  #   with:
+  #     API_MANAGEMENT_ENVIRONMENT: ${{ github.event.inputs.SELECT_TARGET_ENV }} # change this to match the prod environment created in settings
+  #     CONFIGURATION_YAML_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }}/config/configuration.prod.yaml # make sure the file is available at the root
+  #     API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }} # change this to the artifacts folder
+  #     COMMIT_ID: ${{ needs.get-commit.outputs.commit_id }}
+  #   secrets: inherit
+
+  # Push-Changes-To-APIM-Prod-Without-Commit-ID:
+  #   if: ( github.event.inputs.COMMIT_ID_CHOICE == 'publish-all-artifacts-in-repo' )
+  #   needs: [get-commit, Push-Changes-To-APIM-Dev-Without-Commit-ID]
+  #   uses: ./.github/workflows/run-publisher-with-env.yaml
+  #   with:
+  #     API_MANAGEMENT_ENVIRONMENT: ${{ github.event.inputs.SELECT_TARGET_ENV }} # change this to match the prod environment created in settings
+  #     CONFIGURATION_YAML_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }}/config/configuration.prod.yaml # make sure the file is available at the root
+  #     API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }} # change this to the artifacts folder
+  #   secrets: inherit
