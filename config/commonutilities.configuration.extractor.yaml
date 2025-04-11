@@ -1,5 +1,6 @@
  apiNames:
   - commonutilities-v1
+  - commonutilities-v2
 
  diagnosticNames:
   - ignore
@@ -18,9 +19,6 @@
 
  groupNames:
   - ignore
-
- versionSetNames: 
-  - commonutilities-v1
 
  namedValueNames:
   - commonutilities-backend-uri
