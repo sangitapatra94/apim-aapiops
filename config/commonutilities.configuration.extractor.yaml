@@ -20,9 +20,6 @@
  groupNames:
   - ignore
 
- versionSetNames: 
-  - ignore
-
  namedValueNames:
   - commonutilities-backend-uri
   - commonutilities-backend-uri-key
