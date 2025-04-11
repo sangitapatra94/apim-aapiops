@@ -21,7 +21,7 @@
   - ignore
 
  versionSetNames: 
-  - CommonUtilities
+  - commonutilities
 
  namedValueNames:
   - commonutilities-backend-uri
