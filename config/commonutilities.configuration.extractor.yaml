@@ -13,8 +13,6 @@
 
  groupNames: []
 
- versionSetNames: []
-
  namedValueNames:
   - commonutilities-backend-uri
   - commonutilities-backend-uri-key
