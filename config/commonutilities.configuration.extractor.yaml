@@ -1,23 +1,33 @@
  apiNames:
   - commonutilities-v1
 
- diagnosticNames: []
+ diagnosticNames:
+  - ignore
 
- loggerNames: []
+ loggerNames:
+  - ignore
 
- productNames: []
+ productNames:
+  - ignore
 
- subscriptionNames: []
+ subscriptionNames:
+  - ignore
 
- tagNames: []
+ tagNames:
+  - ignore
 
- groupNames: []
+ groupNames:
+  - ignore
+
+ versionSetNames: 
+  - commonutilities-v1
 
  namedValueNames:
   - commonutilities-backend-uri
   - commonutilities-backend-uri-key
 
- backendNames: 
+ backendNames:
   - commonutilities-backend-url
 
- policyFragmentNames: []
+ policyFragmentNames:
+  - ignore
