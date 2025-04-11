@@ -1,0 +1,20 @@
+{
+  "properties": {
+    "path": "commonutilities",
+    "apiRevision": "1",
+    "apiVersion": "v2",
+    "apiVersionSetId": "/subscriptions/be0a5402-e682-4591-9208-a285c33b2699/resourceGroups/Practice-Dev/providers/Microsoft.ApiManagement/service/PRACTICE-APIM-DEV/apiVersionSets/67f8c48c4c3f96a39ce6bb52",
+    "authenticationSettings": {},
+    "description": "",
+    "isCurrent": true,
+    "displayName": "CommonUtilities",
+    "protocols": [
+      "https"
+    ],
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": true
+  }
+}
