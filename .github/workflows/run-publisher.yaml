@@ -50,7 +50,6 @@ jobs:
     uses: ./.github/workflows/run-publisher-with-env.yaml
     with:
       API_MANAGEMENT_ENVIRONMENT: ${{ github.event.inputs.SELECT_TARGET_ENV }} # change this to match the dev environment created in settings
-      CONFIGURATION_YAML_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }}/config/configuration.${{ github.event.inputs.SELECT_TARGET_ENV }}.yaml # make sure the file is available at the root
       API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }} # change this to the artifacts folder
     secrets: inherit
    
