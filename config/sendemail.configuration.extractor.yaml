@@ -11,9 +11,6 @@
  backendNames:
   - commonutilities-backend-url
 
- diagnosticNames:
-  - ignore
-
  loggerNames:
   - ignore
 
