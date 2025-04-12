@@ -19,6 +19,10 @@ on:
         options:
         - Extract All APIs
         - configuration.extractor.yaml
+      CONFIGURATION_YAML_NAME:
+        description: 'Extraction configuration file anme'     
+        required: false
+        type: string
       ARTIFACT_NAME:
         description: 'Name of the Repo Folder'     
         required: true
@@ -32,10 +36,6 @@ on:
         - OpenAPIV3Json
         - OpenAPIV2Yaml
         - OpenAPIV2Json
-      CONFIGURATION_YAML_NAME:
-        description: 'Extraction configuration file anme'     
-        required: false
-        type: string
 
 env:
   apiops_release_version: v6.0.1.6
@@ -43,7 +43,7 @@ env:
 jobs:
   extract:
     runs-on: ubuntu-latest
-    environment: dev # change this to match the dev environment created in settings 
+    environment: ${{ github.event.inputs.SELECT_SOURCE_ENV }} # change this to match the dev environment created in settings 
     steps:
       - uses: actions/checkout@v4
           
