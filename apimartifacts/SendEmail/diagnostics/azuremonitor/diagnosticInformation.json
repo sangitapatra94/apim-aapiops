@@ -1,0 +1,34 @@
+{
+  "properties": {
+    "loggerId": "/subscriptions/be0a5402-e682-4591-9208-a285c33b2699/resourceGroups/Practice-Dev/providers/Microsoft.ApiManagement/service/PRACTICE-APIM-DEV/loggers/azuremonitor",
+    "backend": {
+      "request": {
+        "dataMasking": {
+          "queryParams": [
+            {
+              "mode": "Hide",
+              "value": "*"
+            }
+          ]
+        }
+      }
+    },
+    "frontend": {
+      "request": {
+        "dataMasking": {
+          "queryParams": [
+            {
+              "mode": "Hide",
+              "value": "*"
+            }
+          ]
+        }
+      }
+    },
+    "logClientIp": true,
+    "sampling": {
+      "percentage": 100,
+      "samplingType": "fixed"
+    }
+  }
+}
