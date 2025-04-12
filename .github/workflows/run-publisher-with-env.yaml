@@ -39,17 +39,35 @@ jobs:
       - run: spectral lint "${{ GITHUB.WORKSPACE }}/${{ inputs.API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH }}\apis\*.{json,yml,yaml}" --ruleset https://raw.githubusercontent.com/connectedcircuits/devops-api-linter/main/rules.yaml
 
       # Add this step for each APIM environment and pass specific set of secrets that you want replaced in the env section below
-      - name: "Perform namevalue secret substitution in configuration.${{ inputs.API_MANAGEMENT_ENVIRONMENT}}.yaml"
-        if: (inputs.API_MANAGEMENT_ENVIRONMENT == 'prod' )
-        uses: cschleiden/replace-tokens@v1.3
-        with:
-          tokenPrefix: "{#"
-          tokenSuffix: "#}"
-          files: ${{ format('["**/configuration.{0}.yaml"]', inputs.API_MANAGEMENT_ENVIRONMENT) }}
+      #- name: "Perform namevalue secret substitution in configuration.${{ inputs.API_MANAGEMENT_ENVIRONMENT}}.yaml"
+        #if: (inputs.API_MANAGEMENT_ENVIRONMENT == 'prod' )
+        #uses: cschleiden/replace-tokens@v1.3
+        #with:
+          #tokenPrefix: "{#"
+          #tokenSuffix: "#}"
+          #files: ${{ format('["**/configuration.{0}.yaml"]', inputs.API_MANAGEMENT_ENVIRONMENT) }}
         # specify environment specific secrets to be replaced. For example the QA environment could have a different set sercrets to
         # replace within the configuration.[environment].yaml file
+        #env:
+          #testSecretValue: ${{ secrets.AZURE_RESOURCE_GROUP_NAME }}
+          
+     # Add this step for each APIM environment and pass specific set of secrets that you want replaced in the env section below
+      - name: "List files for debugging"
+        run: ls -R
+
+      - name: "Perform custom token replacement in configuration.${{ inputs.API_MANAGEMENT_ENVIRONMENT}}.yaml"
+        if: (inputs.API_MANAGEMENT_ENVIRONMENT == 'prod' )
+        run: |
+          TOKEN_PREFIX="{#"
+          TOKEN_SUFFIX="#}"
+
+          # Define the file pattern
+          FILE_PATTERN="${{ inputs.CONFIGURATION_YAML_PATH }}"
+
+          # Replace tokens in the file
+          sed -i "s/${TOKEN_PREFIX}AZURE_RESOURCE_GROUP_NAME${TOKEN_SUFFIX}/${{ secrets.AZURE_RESOURCE_GROUP_NAME }}/g" $FILE_PATTERN
         env:
-          testSecretValue: ${{ secrets.AZURE_RESOURCE_GROUP_NAME }}
+          AZURE_RESOURCE_GROUP_NAME: ${{ secrets.AZURE_RESOURCE_GROUP_NAME }}
       
       #- name: "Perform namevalue secret substitution in configuration.${{ inputs.API_MANAGEMENT_ENVIRONMENT}}.yaml"
         #if: (inputs.API_MANAGEMENT_ENVIRONMENT == 'prod' )
