@@ -1,0 +1,12 @@
+ apiNames:
+  - sendemail-v1
+
+ versionSetNames: 
+  - 67f8e02e6b57b23e2c674da8
+
+ namedValueNames:
+  - commonutilities-backend-uri
+  - commonutilities-backend-uri-key
+
+ backendNames:
+  - commonutilities-backend-url
