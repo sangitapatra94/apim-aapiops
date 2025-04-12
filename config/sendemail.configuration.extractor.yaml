@@ -10,3 +10,24 @@
 
  backendNames:
   - commonutilities-backend-url
+
+ diagnosticNames:
+  - PRACTICE-APIM-DEV-LOGS
+
+ loggerNames:
+  - PRACTICE-APPI-DEV
+
+ productNames:
+  - ignore
+
+ subscriptionNames:
+  - ignore
+
+ tagNames:
+  - ignore
+
+ groupNames:
+  - ignore
+
+ policyFragmentNames:
+  - ignore
