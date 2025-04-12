@@ -56,7 +56,7 @@ jobs:
         run: ls -R
 
       - name: "Perform custom token replacement in configuration.${{ inputs.API_MANAGEMENT_ENVIRONMENT}}.yaml"
-        if: (inputs.API_MANAGEMENT_ENVIRONMENT == 'prod' )
+        if: (inputs.API_MANAGEMENT_ENVIRONMENT != 'prod' )
         run: |
           TOKEN_PREFIX="{#"
           TOKEN_SUFFIX="#}"
