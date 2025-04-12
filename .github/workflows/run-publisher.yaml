@@ -15,8 +15,16 @@ on:
         - uat
         - prod
       COMMIT_ID_CHOICE:
-        description: 'Commit Id'
+        description: 'Choose "publish-all-artifacts-in-repo" only when you want to force republishing all artifacts (e.g. after build failure). Otherwise stick with the default behavior of "publish-artifacts-in-last-commit"'
         required: true
+        type: choice
+        default: "publish-artifacts-in-last-commit"
+        options:
+          - "publish-artifacts-with-commit-id"
+          - "publish-all-artifacts-in-repo"
+      COMMIT_ID:
+        description: 'Commit Id'
+        required: false
         type: string
       ARTIFACT_NAME:
         description: 'Name of the Repo Folder'     
@@ -27,12 +35,12 @@ jobs:
   
   #Publish with Commit ID
   Push-Changes-To-APIM-With-Commit-ID:
-    if: (github.event.inputs.COMMIT_ID_CHOICE != '')
+    if: (github.event.inputs.COMMIT_ID_CHOICE == 'publish-artifacts-with-commit-id')
     uses: ./.github/workflows/run-publisher-with-env.yaml
     with:
       API_MANAGEMENT_ENVIRONMENT: ${{ github.event.inputs.SELECT_TARGET_ENV }} # change this to match the dev environment created in settings
       CONFIGURATION_YAML_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }}/config/configuration.${{ github.event.inputs.SELECT_TARGET_ENV }}.yaml # make sure the file is available at the root
-      COMMIT_ID: ${{ github.event.inputs.COMMIT_ID_CHOICE }}
+      COMMIT_ID: ${{ github.event.inputs.COMMIT_ID }}
       API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }} # change this to the artifacts folder
     secrets: inherit
 
@@ -42,6 +50,7 @@ jobs:
     uses: ./.github/workflows/run-publisher-with-env.yaml
     with:
       API_MANAGEMENT_ENVIRONMENT: ${{ github.event.inputs.SELECT_TARGET_ENV }} # change this to match the dev environment created in settings
+      CONFIGURATION_YAML_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }}/config/configuration.${{ github.event.inputs.SELECT_TARGET_ENV }}.yaml # make sure the file is available at the root
       API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }} # change this to the artifacts folder
     secrets: inherit
    
