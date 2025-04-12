@@ -1,8 +1,0 @@
-{
-  "properties": {
-    "displayName": "Environment",
-    "secret": false,
-    "tags": [],
-    "value": "Dev"
-  }
-}
