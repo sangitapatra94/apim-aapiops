@@ -1,0 +1,21 @@
+apimServiceName: PRACTICE-APIM-PROD
+namedValues:
+  - name: commonutilities-backend-uri
+    properties:
+      displayName: commonutilities-backend-uri
+      value: "/workflows/f9ed02c791d74149be5fb8be4ec1d005/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01\u0026sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun\u0026sv=1.0\u0026sig="
+  - name: commonutilities-backend-uri-key
+    properties:
+      displayName: commonutilities-backend-uri-key
+      keyVault:
+        secretIdentifier: "https://practice-kvault-prod.vault.azure.net/secrets/commonutilities-backend-uri-key"
+backends:
+  - name: commonutilities-backend-url
+    properties:
+      url: "https://prod-43.eastus.logic.azure.com:443"
+apis:
+  - name: sendemail-v1
+    diagnostics:
+      - name: applicationinsights
+        properties:
+          loggerId: "/subscriptions/be0a5402-e682-4591-9208-a285c33b2699/resourceGroups/Practice-Prod/providers/Microsoft.ApiManagement/service/PRACTICE-APIM-PROD/loggers/practice-appi-prod"
