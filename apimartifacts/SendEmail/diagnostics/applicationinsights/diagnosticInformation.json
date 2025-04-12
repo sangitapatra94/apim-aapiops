@@ -4,38 +4,33 @@
     "alwaysLog": "allErrors",
     "backend": {
       "request": {
-        "body": {
-          "bytes": 8192
-        },
-        "headers": []
-      },
-      "response": {
-        "body": {
-          "bytes": 8192
-        },
-        "headers": []
+        "dataMasking": {
+          "queryParams": [
+            {
+              "mode": "Hide",
+              "value": "*"
+            }
+          ]
+        }
       }
     },
     "frontend": {
       "request": {
-        "body": {
-          "bytes": 8192
-        },
-        "headers": []
-      },
-      "response": {
-        "body": {
-          "bytes": 8192
-        },
-        "headers": []
+        "dataMasking": {
+          "queryParams": [
+            {
+              "mode": "Hide",
+              "value": "*"
+            }
+          ]
+        }
       }
     },
-    "httpCorrelationProtocol": "W3C",
+    "httpCorrelationProtocol": "Legacy",
     "logClientIp": true,
     "sampling": {
       "percentage": 100,
       "samplingType": "fixed"
-    },
-    "verbosity": "information"
+    }
   }
 }
