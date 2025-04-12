@@ -14,7 +14,7 @@ backends:
     properties:
       url: "https://prod-43.eastus.logic.azure.com:443"
 apis:
-  - name: sendemail
+  - name: sendemail-v1
     diagnostics:
       - name: applicationinsights
         properties:
