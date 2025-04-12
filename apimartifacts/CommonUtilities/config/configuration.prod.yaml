@@ -1,0 +1,7 @@
+apimServiceName: PRACTICE-APIM-PROD
+namedValues:
+  - name: commonutilities-backend-uri-key
+    properties:
+      displayName: commonutilities-backend-uri-key
+      keyVault:
+        secretIdentifier: "https://practice-kvault-prod.vault.azure.net/secrets/commonutilities-backend-uri-key"
