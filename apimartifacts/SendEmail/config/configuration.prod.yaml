@@ -13,10 +13,17 @@ backends:
   - name: commonutilities-backend-url
     properties:
       url: "https://prod-43.eastus.logic.azure.com:443"
+diagnostics:
+  - name: applicationinsights
+    properties:
+      loggerId: "/subscriptions/be0a5402-e682-4591-9208-a285c33b2699/resourceGroups/Practice-Prod/providers/Microsoft.ApiManagement/service/PRACTICE-APIM-PROD/loggers/practice-appi-prod"
+  - name: azuremonitor
+    properties:
+      loggerId: "/subscriptions/be0a5402-e682-4591-9208-a285c33b2699/resourceGroups/Practice-Prod/providers/Microsoft.ApiManagement/service/PRACTICE-APIM-PROD/loggers/azuremonitor"
 apis:
   - name: sendemail-v1
     diagnostics:
       - name: applicationinsights
         properties:
           verbosity: Error
-          loggerId: "/subscriptions/be0a5402-e682-4591-9208-a285c33b2699/resourceGroups/Practice-Prod/providers/Microsoft.ApiManagement/service/PRACTICE-APIM-PROD/loggers/practice-appi-qa"
+          loggerId: "/subscriptions/be0a5402-e682-4591-9208-a285c33b2699/resourceGroups/Practice-Prod/providers/Microsoft.ApiManagement/service/PRACTICE-APIM-PROD/loggers/practice-appi-prod"
