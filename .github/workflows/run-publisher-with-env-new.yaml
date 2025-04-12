@@ -1,4 +1,4 @@
-name: Run Publisher with Environment
+name: Run Publisher with Environment New
 
 on:
   workflow_call:
