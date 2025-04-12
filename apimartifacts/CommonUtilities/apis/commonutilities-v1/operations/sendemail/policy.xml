@@ -8,8 +8,9 @@
 	<!-- Throttle, authorize, validate, cache, or transform the requests -->
 	<inbound>
 		<base />
-		<set-backend-service backend-id="commonutilities-backend-url" />
-		<rewrite-uri template="{{commonutilities-backend-uri}}{{commonutilities-backend-uri-key}}" />
+		<!--<set-backend-service backend-id="commonutilities-backend-url" />-->
+		<set-backend-service base-url="https://prod-43.eastus.logic.azure.com:443" />
+		<rewrite-uri template="{{commonutilities-backend-uri}}" />
 		<set-header name="Authorization" exists-action="delete" />
 		<set-header name="Content-Type" exists-action="override">
 			<value>application/json</value>
