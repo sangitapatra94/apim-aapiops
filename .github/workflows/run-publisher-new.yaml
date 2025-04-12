@@ -18,7 +18,7 @@ on:
           - "publish-artifacts-in-last-commit"
           - "publish-all-artifacts-in-repo"
       ARTIFACT_NAME:
-         description: 'Name of the Repo Folder'     
+         description: 'Name of the Repo Folder'
          required: true
          type: string
 
@@ -73,3 +73,4 @@ jobs:
       CONFIGURATION_YAML_PATH: configuration.prod.yaml # make sure the file is available at the root
       API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }} # change this to the artifacts folder
     secrets: inherit
+	
