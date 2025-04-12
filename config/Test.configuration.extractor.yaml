@@ -1,5 +1,32 @@
  apiNames:
   - test-v1
 
+ diagnosticNames:
+  - ignore
+
+ loggerNames:
+  - ignore
+
+ productNames:
+  - ignore
+
+ subscriptionNames:
+  - ignore
+
+ tagNames:
+  - ignore
+
+ groupNames:
+  - ignore
+
+ versionSetNames: 
+  - 67f8c48c4c3f96a39ce6bb52
+
  namedValueNames:
   - Environment
+
+ backendNames:
+  - ignore
+
+ policyFragmentNames:
+  - ignore
