@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "scope": "/subscriptions/be0a5402-e682-4591-9208-a285c33b2699/resourceGroups/Practice-Dev/providers/Microsoft.ApiManagement/service/PRACTICE-APIM-DEV/products/unlimited",
+    "allowTracing": false,
+    "ownerId": "/subscriptions/be0a5402-e682-4591-9208-a285c33b2699/resourceGroups/Practice-Dev/providers/Microsoft.ApiManagement/service/PRACTICE-APIM-DEV/users/1",
+    "state": "active"
+  }
+}
