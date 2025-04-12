@@ -1,6 +1,5 @@
  apiNames:
   - commonutilities-v1
-  - commonutilities-v2
 
  diagnosticNames:
   - ignore
@@ -25,10 +24,9 @@
 
  namedValueNames:
   - commonutilities-backend-uri
-  - commonutilities-backend-uri-key
 
  backendNames:
-  - commonutilities-backend-url
+  - ignore
 
  policyFragmentNames:
   - ignore
