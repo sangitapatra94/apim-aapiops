@@ -18,4 +18,4 @@ apis:
     diagnostics:
       - name: applicationinsights
         properties:
-          loggerId: "/subscriptions/be0a5402-e682-4591-9208-a285c33b2699/resourceGroups/Practice-Prod/providers/Microsoft.ApiManagement/service/PRACTICE-APIM-PROD/loggers/practice-appi-prod"
+          loggerId: "/subscriptions/be0a5402-e682-4591-9208-a285c33b2699/resourceGroups/Practice-Prod/providers/Microsoft.ApiManagement/service/PRACTICE-APIM-PROD/loggers/practice-appi-qa"
