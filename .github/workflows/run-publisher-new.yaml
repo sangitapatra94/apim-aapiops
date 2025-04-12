@@ -45,7 +45,7 @@ jobs:
     needs: get-commit
     uses: ./.github/workflows/run-publisher-with-env-new.yaml
     with:
-      API_MANAGEMENT_ENVIRONMENT: prod # change this to match the dev environment created in settings
+      API_MANAGEMENT_ENVIRONMENT: dev # change this to match the dev environment created in settings
       API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: apimartifacts/Test # change this to the artifacts folder
     secrets: inherit
 
@@ -65,7 +65,7 @@ jobs:
     needs: [get-commit, Push-Changes-To-APIM-Dev-Without-Commit-ID]
     uses: ./.github/workflows/run-publisher-with-env-new.yaml
     with:
-      API_MANAGEMENT_ENVIRONMENT: qa # change this to match the prod environment created in settings
+      API_MANAGEMENT_ENVIRONMENT: prod # change this to match the prod environment created in settings
       CONFIGURATION_YAML_PATH: configuration.prod.yaml # make sure the file is available at the root
       API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: apimartifacts/Test # change this to the artifacts folder
     secrets: inherit
