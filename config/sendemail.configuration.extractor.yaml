@@ -12,10 +12,10 @@
   - commonutilities-backend-url
 
  diagnosticNames:
-  - PRACTICE-APIM-DEV-LOGS
+  - ignore
 
  loggerNames:
-  - PRACTICE-APPI-DEV
+  - ignore
 
  productNames:
   - ignore
